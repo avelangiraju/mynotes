@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5th EVS - Every Drop is Precious</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: rgb(219, 11, 157);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+
+    #title {
+      margin: 5px 0;
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px;
+      background-color: rgb(255, 209, 241);
+      width: 100%;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: rgb(219, 11, 157);
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    nav a:hover,
+    nav a:active {
+      background-color: rgb(219, 11, 157);
+      color: white;
+    }
+
+    h1 {
+      color: rgb(219, 11, 157);
+      text-align: center;
+      font-size: 24px;
+      margin: 15px 0;
+    }
+    
+    h2 {
+      color: rgba(219, 11, 157, 0.7);
+      font-size: 20px;
+      margin: 15px 0 10px;
+    }
+    
+    h3 {
+      color: #000;
+      font-size: 18px;
+      margin: 12px 0 8px;
+    }
+    
+    p, ul, ol {
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 8px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 15px;
+      padding: 15px;
+      background-color: #f4f4f4;
+      flex: 1;
+    }
+
+    .sidebar {
+      background-color: rgb(255, 209, 241);
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+      border: 0.5px solid #ccc;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      padding: 10px;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border: 0.5px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card button {
+      width: 100%;
+      margin: 0;
+      padding: 10px;
+      border: 1px solid rgb(219, 11, 157);
+      border-radius: 5px;
+      color: rgb(219, 11, 157);
+      background-color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 14px;
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+      touch-action: manipulation; /* Improve touch responsiveness */
+    }
+
+    .card button:hover,
+    .card button:active {
+      background-color: rgb(219, 11, 157);
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: rgb(255, 209, 241);
+      color: rgb(219, 11, 157);
+      font-weight: bold;
+      width: 100%;
+    }
+
+    /* Hide worksheets initially */
+    #Worksheet-1, 
+    #Worksheet-2, 
+    #Worksheet-3, 
+    #Worksheet-4, 
+    #Worksheet-5, 
+    #Worksheet-6, 
+    #Worksheet-7,
+    #Reflections,
+    #Activity-1,
+    #Activity-2,
+    #Activity-3,
+    #Activity-4,
+    #Activity-5,
+    #Activity-6,
+    #Activity-7,
+    #Observations,
+    #Student-Notes {
+      display: none;
+      margin: 10px 0;
+      padding: 15px;
+    }
+
+    .main-content {
+      padding: 15px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+      border: 0.5px solid #ccc;
+      width: 100%;
+    }
+
+    .emoji {
+      font-size: 16px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    .active-content {
+      display: block !important;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 10px;
+      }
+      
+      .sidebar {
+        padding: 10px;
+      }
+      
+      .card {
+        margin-bottom: 10px;
+        padding: 8px;
+      }
+      
+      .card button {
+        padding: 12px; /* Increased padding for better touch targets */
+        font-size: 15px;
+      }
+      
+      nav {
+        gap: 5px;
+        padding: 5px;
+      }
+      
+      nav a {
+        padding: 8px 10px; /* Slightly larger for mobile */
+        font-size: 13px;
+      }
+      
+      #title {
+        font-size: 24px;
+      }
+      
+      h1 {
+        font-size: 22px;
+      }
+      
+      h2 {
+        font-size: 18px;
+      }
+      
+      h3 {
+        font-size: 16px;
+      }
+      
+      p, ul, ol {
+        font-size: 15px;
+      }
+      
+      .main-content {
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      
+      nav a {
+        flex: 1;
+        min-width: 45%;
+        text-align: center;
+      }
+      
+      .card button {
+        padding: 14px 8px; /* Even larger for very small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <p style="text-align: center; margin: 0;">Chapter - 6</p>
+    <h1 id="title">Every Drop is Precious</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showContent('home')">Home</a>
+    <a href="#">About</a>
+    <a href="#">Lessons</a>
+    <a href="#">Activities</a>
+    <a href="#">Resources</a>
+    <a href="#">Contact</a>
+    <a href="#">Feedback</a>
+  </nav>
+
+  <main class="container">
+    <aside class="sidebar">
+      <div class="card">
+        <button onclick="showContent('Worksheet-1')">Worksheet-1</button>
+        <button onclick="showContent('Worksheet-2')">Worksheet-2</button>
+        <button onclick="showContent('Worksheet-3')">Worksheet-3</button>
+        <button onclick="showContent('Worksheet-4')">Worksheet-4</button>
+        <button onclick="showContent('Worksheet-5')">Worksheet-5</button>
+        <button onclick="showContent('Worksheet-6')">Worksheet-6</button>
+        <button onclick="showContent('Worksheet-7')">Worksheet-7</button>
+      </div>
+
+      <div class="card">
+        <button onclick="showContent('Activity-1')">Activity-1</button>
+        <button onclick="showContent('Activity-2')">Activity-2</button>
+        <button onclick="showContent('Activity-3')">Activity-3</button>
+        <button onclick="showContent('Activity-4')">Activity-4</button>
+        <button onclick="showContent('Activity-5')">Activity-5</button>
+        <button onclick="showContent('Activity-6')">Activity-6</button>
+        <button onclick="showContent('Activity-7')">Activity-7</button>
+      </div>
+
+      <div class="card">
+        <button onclick="showContent('Reflections')">Teacher's Diary</button>
+        <button onclick="showContent('Observations')">Observations</button>
+        <button onclick="showContent('Student-Notes')">Student Notes</button>
+      </div>
+    </aside>
+
+    <section class="main-content">
+      <!-- Default content -->
+      <div id="home" class="active-content">
+        <h1>Welcome to Chapter 6: Every Drop is Precious</h1>
+        <p>This chapter explores the importance of water conservation and management. Use the buttons on the left to navigate through worksheets, activities, and teacher resources.</p>
+        <p>Select a worksheet or activity to get started!</p>
+      </div>
+
+      <!-- Worksheet 1 -->
+      <div id="Worksheet-1">
+        <h1>Worksheet-1 Answers</h1>
+        <h2>Name these sources of water:</h2>
+        <ul>
+          <li>Ocean</li>
+          <li>Dam</li>
+          <li>Canal</li>
+          <li>Hand pump</li>
+          <li>Tube well</li>
+          <li>Well</li>
+          <li>Lake</li>
+        </ul>
+
+        <h2>Answer the following questions:</h2>
+        <ol>
+          <li>
+            <h3>What is the main source of water bodies?</h3>
+            <p>The main source of water bodies is <b>rain water</b>.</p>
+          </li>
+          <li>
+            <h3>How do we store river water and rain water?</h3>
+            <ul>
+              <li><b>Rain water</b> is stored by building <b>tanks</b>.</li>
+              <li><b>River water</b> is stored in <b>reservoirs by constructing dams</b>.</li>
+            </ul>
+          </li>
+        </ol>
+        <h2>Benefits of Dams</h2>
+
+        <ol start="3">
+          <li>
+            <h3>What is a Dam?</h3>
+            <p>A dam is defined as <b>a barrier constructed to hold the backwaters and to raise its level by forming a reservoir</b>. Dams are used to <b>generate electricity and as a water resource</b>.</p>
+          </li>
+          <li>
+            <h3>Where are dams constructed?</h3>
+            <p>Dams are usually constructed <b>across the rivers</b> to store water. They are built for a variety of purposes such as <b>drinking, irrigation, and power generation</b>.</p>
+          </li>
+          <li>
+            <h3>What rivers flow through our state?</h3>
+            <p>The major rivers in the state are <b>Krishna and Godavari</b>. Other rivers listed are <b>Vamsadhara, Nagavali and Pennar</b>.</p>
+          </li>
+          <li>
+            <h3>Name the reservoirs in our state?</h3>
+            <p>Major projects built across the rivers include the <b>Nagarjunasagar and Srisailam dams</b>, which are multipurpose dams built across the river Krishna. The <b>Sir Arthur Thomas Cotton barrage</b> is built across the river Godavari at Dowleswaram. The balancing reservoirs mentioned are <b>Pulichintala, Teluguganga, Thotapalli barrage, Kandaleru reservoir, and Veligonda</b>, which are mainly intended for agriculture and drinking purposes.</p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Worksheet 2 -->
+      <div id="Worksheet-2">
+        <h1>Worksheet-2 Answers</h1>
+        <h2>Rewrite the following words:</h2>
+        <p>Student activity</p>
+        <h2>Answer the following questions:</h2>
+        <ol>
+          <li><h3>Which is the fourth largest river in India?</h3><p>The river Krishna is the fourth largest river in India.</p></li>
+          <li><h3>Where does the Krishna river's journey start?</h3><p>The river Krishna starts its journey from <b>Mahabaleswar in Maharashtra</b>.</p></li>
+          <li><h3>How long is the Krishna river?</h3><p>The river is <b>almost 1400 kilometers long</b>.</p></li>
+          <li><h3>Name the states through which river Krishna flows?</h3><p>Maharashtra, Karnataka, Telangana, and Andhra Pradesh.</p></li>
+          <li><h3>In which districts does Krishna river flow in our state?</h3><p>Kurnool, Nandyal, Palnadu, Guntur, Bapatla, N.T.R., and Krishna.</p></li>
+        </ol>
+      </div>
+      
+      <!-- Activities -->
+      <div id="Activity-1">
+        <h1>Activity-1</h1>
+        <p>Activity content will appear here.</p>
+      </div>
+      
+      <div id="Activity-2">
+        <h1>Activity-2</h1>
+        <p>Activity content will appear here.</p>
+      </div>
+      
+      <div id="Activity-3">
+        <h1>Activity-3</h1>
+        <p>Activity content will appear here.</p>
+      </div>
+      
+      <div id="Activity-4">
+        <h1>Activity-4</h1>
+        <p>Activity content will appear here.</p>
+      </div>
+      
+      <div id="Activity-5">
+        <h1>Activity-5</h1>
+        <p>Activity content will appear here.</p>
+      </div>
+      
+      <div id="Activity-6">
+        <h1>Activity-6</h1>
+        <p>Activity content will appear here.</p>
+      </div>
+      
+      <div id="Activity-7">
+        <h1>Activity-7</h1>
+        <p>Activity content will appear here.</p>
+      </div>
+      
+      <!-- Teacher's diary summary -->
+      <div id="Reflections">
+        <h1>Teacher's Handbook Summary</h1>
+
+        <h2>Teacher's Handbook &#8208; Key Takeaways</h2>
+        <h3>బోధన ప్రక్రియకు మార్గదర్శిని</h3>
+        <ul class="emoji">
+          <li>నిర్మాణాత్మక, క్రియాత్మక అభ్యాసం కలిగిన బోధనకు దోహదపడే విధంగా handbook రూపొందించబడింది.</li>
+          <li>Pre-teaching, Teaching, Post-teaching phases లో అవసరమైన పనులను step-wise గా అందిస్తుంది.</li>
+        </ul>
+
+        <h3>పాఠ్యాంశాన్ని రూపొందించడంలో ముఖ్యమైన అంశాలు</h3>
+        <ul class="emoji">
+          <li><strong>Prior Knowledge:</strong> విద్యార్థుల known concepts ద్వారా unknown topics ని అనుసంధానించడం.</li>
+          <li><strong>Concept Maps:</strong> logical teaching order లో sub-topics arrangement.</li>
+          <li><strong>Learning Outcomes:</strong> NCF 2022 ఆధారంగా age-specific aims కు అనుగుణంగా లక్ష్యాలు.</li>
+          <li><strong>Hook Activities:</strong> మైండ్ మ్యాపింగ్, ఆలోచనాత్మక ప్రశ్నలు, డిజిటల్ వనరులు ద్వారా పాఠ్యాంశ ప్రవేశం.</li>
+        </ul>
+        <h3>అభ్యాసాన్ని మెరుగుపరచే బోధనా వ్యూహాలు</h3>
+        <ul class="emoji">
+          <li><strong>Gradual Release (I do → We do → You do):</strong> విద్యార్థి gradually self-responsibility తీసుకోవడం.</li>
+          <li><strong>CFU (Check for Understanding):</strong>
+            <ul>
+              <li>Factual based questions</li>
+              <li>Open-ended, analytical, hypothesis level questions</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>అకాడమిక్ అనుసంధానం & సమయ నిర్వహణ</h3>
+        <ul class="emoji">
+          <li>అకాడమిక్ క్యాలెండర్ ఆధారంగా period planning.</li>
+          <li>Instructional & Non-instructional days clearly mapped.</li>
+        </ul>
+
+        <h3>Teacher Reflection & Notes</h3>
+        <ul class="emoji">
+          <li>ప్రతీ పీరియడ్ పై reflections &#8208; TLM, time, remarks.</li>
+          <li>Chapter-level reflections &#8208; difficulties faced, strategies used, suggestions for future.</li>
+          <li>HM approval with signature after each chapter.</li>
+          <li>Supplementary material references & additional strategies documented.</li>
+        </ul>
+
+        <h3>Technical Support through DIKSHA</h3>
+        <ul class="emoji">
+          <li>Each chapter has QR codes → DIKSHA app → 5 types of content:
+            <ul>
+              <li>Explanation</li>
+              <li>Learning</li>
+              <li>Practice</li>
+              <li>Digital Lesson</li>
+              <li>Teacher Resources</li>
+            </ul>
+          </li>
+          <li>Soft copy of handbook can be searched using "THB" + Lesson name.</li>
+        </ul>
+      </div>
+      
+      <div id="Observations">
+        <h1>Observations</h1>
+        <p>Observation content will appear here.</p>
+      </div>
+      
+      <div id="Student-Notes">
+        <h1>Student Notes</h1>
+        <p>Student notes content will appear here.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 EVS Documentation | Velangiraju
+  </footer>
+
+  <script>
+    function showContent(id) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.main-content > div');
+      sections.forEach(sec => sec.classList.remove('active-content'));
+      
+      // Show selected
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active-content');
+      
+      // Scroll to top of content on mobile
+      if (window.innerWidth <= 768) {
+        document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    
+    // Add event listeners for better mobile support
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add touch event listeners for mobile
+      const buttons = document.querySelectorAll('.card button');
+      buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.98)';
+        });
+        
+        button.addEventListener('touchend', function() {
+          this.style.transform = 'scale(1)';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

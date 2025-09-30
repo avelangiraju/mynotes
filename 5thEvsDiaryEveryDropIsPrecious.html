@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher's Diary - Every Drop is Precious</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .diary-info {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+         }
+        header {
+            background: linear-gradient(135deg,  rgb(223, 48, 170),rgb(143, 15, 75) );
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            color: rgb(219, 11, 157);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background-color:rgba(219, 123, 187, 0.582) ;
+            color:black;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: rgba(247, 226, 240, 0.582);
+        }
+        
+        .reflection-questions {
+            background-color: rgba(247, 226, 240, 0.582);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+        }
+        
+        .question h3 {
+            color: rgb(219, 11, 157);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .question p {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid rgb(219, 11, 157);
+        }
+        
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(219, 123, 187, 0.582);
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+         .signature-section {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 30px;
+        }
+        .signature-box {
+            width: 45%;
+        }
+        .signature-line {
+            border-bottom: 1px solid #333;
+            margin-top: 40px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+            
+            .calendar {
+                grid-template-columns: repeat(7, 1fr);
+            }
+            
+            .calendar-date, .calendar-day {
+                padding: 5px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Teacher's Diary</h1>
+            <p>EVS - Grade 5 | Unit 6: Every Drop is Precious</p>
+        </header>
+            <div class="diary-info">
+                <p><strong>Name of the Teacher:</strong> [To be filled by teacher]</p>
+                <p><strong>Name of the Lesson:</strong> Every Drop Is Precious</p>
+                <p><strong>Class:</strong> 5</p>
+                <p><strong>Name of the Month:</strong> September</p>
+            </div>
+        <div class="content">
+            <div class="section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Period No</th>
+                            <th>Name of the Concept to be taught</th>
+                            <th>Date</th>
+                            <th>Activities Conducted during the teaching</th>
+                            <th>TLM Used</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>6.1</td>
+                            <td>Water Resources</td>
+                            <td>1-Oct-2025</td>
+                            <td>Introduction to water resources; group activity listing local water sources; independent workbook task.</td>
+                            <td>Textbook (p.276), Vocabulary chart, Workbook (p.237-238)</td>
+                            <td>Students will understand different natural and artificial water resources and their uses.</td>
+                        </tr>
+                        <tr>
+                            <td>6.2</td>
+                            <td>River Krishna</td>
+                            <td>2-Oct-2025</td>
+                            <td>Read aloud about Krishna River; group discussion on tributaries and importance; mind map completion.</td>
+                            <td>Textbook (p.278), Link 7 (Krishna river system video), Link 8 & 9 (Nagarjuna Sagar, Prakasam Barrage)</td>
+                            <td>Students will recognize the role of River Krishna in agriculture, drinking water, and hydroelectric power.</td>
+                        </tr>
+                        <tr>
+                            <td>6.3</td>
+                            <td>Major Rivers in Andhra Pradesh</td>
+                            <td>3-Oct-2025</td>
+                            <td>Teacher-led discussion on major rivers; group work locating rivers on map; independent worksheet completion.</td>
+                            <td>Map/printouts of AP rivers, Link 10, Workbook (p.242-244)</td>
+                            <td>Students will list and locate major rivers of Andhra Pradesh.</td>
+                        </tr>
+                        <tr>
+                            <td>6.4</td>
+                            <td>Identification of Major Rivers in Andhra Pradesh Map</td>
+                            <td>6-Oct-2025</td>
+                            <td>Map reading and interpretation; group activity to identify rivers, origins, and districts.</td>
+                            <td>Outline map of Andhra Pradesh (Link 11), Workbook (p.242-244)</td>
+                            <td>Students will read and interpret a map to locate major rivers in Andhra Pradesh.</td>
+                        </tr>
+                        <tr>
+                            <td>6.5</td>
+                            <td>Fishermen and Water Transport</td>
+                            <td>7-Oct-2025</td>
+                            <td>Read aloud about fishing and transport; sink and float demo; group activity with objects; newspaper article analysis.</td>
+                            <td>Textbook (p.282), Bucket, objects (nail, feather, sponge, paper), Newspapers</td>
+                            <td>Students will understand the importance of rivers in transportation, trade, and livelihoods.</td>
+                        </tr>
+                        <tr>
+                            <td>6.6</td>
+                            <td>Sink and Float</td>
+                            <td>8-Oct-2025</td>
+                            <td>Demonstration of buoyancy; group experiments with objects; independent worksheet and drawing task.</td>
+                            <td>Bucket, assorted objects, Worksheet (p.246)</td>
+                            <td>Students will demonstrate the concept of buoyancy by experimenting with objects that sink or float.</td>
+                        </tr>
+                        <tr>
+                            <td>6.7</td>
+                            <td>Tragedy of Rivers</td>
+                            <td>9-Oct-2025</td>
+                            <td>Read aloud about water pollution; group discussion on causes and measures; independent worksheet.</td>
+                            <td>Textbook (p.284), Worksheet (p.247-248)</td>
+                            <td>Students will identify human activities that cause pollution and depletion of rivers.</td>
+                        </tr>
+                        <tr>
+                            <td>6.8</td>
+                            <td>Drought and Floods</td>
+                            <td>10-Oct-2025</td>
+                            <td>Compare drought and flood; read case studies; group discussion on causes and effects.</td>
+                            <td>Textbook (p.284, 286), Case studies of Nirmala and Navneetha</td>
+                            <td>Students will differentiate between droughts and floods and their causes.</td>
+                        </tr>
+                        <tr>
+                            <td>6.9</td>
+                            <td>Real-Life Examples of Floods</td>
+                            <td>13-Oct-2025</td>
+                            <td>Gallery walk with flood images; group analysis of causes/effects; independent scenario writing.</td>
+                            <td>Flood images, Worksheet (p.249)</td>
+                            <td>Students will understand the importance of flood management and relief measures.</td>
+                        </tr>
+                        <tr>
+                            <td>6.10</td>
+                            <td>Real-Life Examples of Droughts</td>
+                            <td>14-Oct-2025</td>
+                            <td>Gallery walk with drought images; group analysis; independent scenario writing; collage homework.</td>
+                            <td>Drought images, Worksheet (p.249)</td>
+                            <td>Students will study examples of severe droughts and their consequences on farmers and communities.</td>
+                        </tr>
+                        <tr>
+                            <td>6.11</td>
+                            <td>Student independent practice</td>
+                            <td>15-Oct-2025</td>
+                            <td>Completion of unfinished workbook activities.</td>
+                            <td>Workbook (various pages)</td>
+                            <td>Reinforcement of concepts through independent practice.</td>
+                        </tr>
+                        <tr>
+                            <td>6.12</td>
+                            <td>Student independent practice</td>
+                            <td>16-Oct-2025</td>
+                            <td>Completion of unfinished workbook activities.</td>
+                            <td>Workbook (various pages)</td>
+                            <td>Reinforcement of concepts through independent practice.</td>
+                        </tr>
+                        <tr>
+                            <td>6.13</td>
+                            <td>Student independent practice</td>
+                            <td>17-Oct-2025</td>
+                            <td>Completion of unfinished workbook activities.</td>
+                            <td>Workbook (various pages)</td>
+                            <td>Reinforcement of concepts through independent practice.</td>
+                        </tr>
+                        <tr>
+                            <td>6.14</td>
+                            <td>Student independent practice</td>
+                            <td>20-Oct-2025</td>
+                            <td>Completion of unfinished workbook activities.</td>
+                            <td>Workbook (various pages)</td>
+                            <td>Reinforcement of concepts through independent practice.</td>
+                        </tr>
+                        <tr>
+                            <td>6.15</td>
+                            <td>Student independent practice</td>
+                            <td>21-Oct-2025</td>
+                            <td>Completion of unfinished workbook activities.</td>
+                            <td>Workbook (various pages)</td>
+                            <td>Reinforcement of concepts through independent practice.</td>
+                        </tr>
+                        <tr>
+                            <td>6.16</td>
+                            <td>Remedial teaching</td>
+                            <td>22-Oct-2025</td>
+                            <td>Recap of key concepts: dams, River Krishna, water pollution, droughts, floods.</td>
+                            <td>Link 12 (Summary video), Teacher notes</td>
+                            <td>Revise and reinforce understanding of the chapter's main topics.</td>
+                        </tr>
+                        <tr>
+                            <td>6.17</td>
+                            <td>Remedial teaching</td>
+                            <td>23-Oct-2025</td>
+                            <td>Final revision using summary video and Q/A session.</td>
+                            <td>Link 12 (Summary video)</td>
+                            <td>Ensure all learning outcomes are met and clarify doubts.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="reflection-questions">
+                <h2 class="section-title">Reflection Questions</h2>
+                
+                <div class="question">
+                    <h3>1. What were some of the specific strategies that I used to encourage participation? How effective were they? What will I do differently next time?</h3>
+                    <p>Strategies included group discussions, gallery walks, hands-on activities (sink and float), and using real-life case studies. These were effective in engaging students and connecting lessons to their experiences. Next time, I might incorporate more role-playing or local field visits to deepen real-world connections.</p>
+                </div>
+                
+                <div class="question">
+                    <h3>2. Were there any concepts or activities that students found particularly difficult? How will I adapt my approach to address these difficulties in the next lesson?</h3>
+                    <p>Students may have struggled with differentiating between droughts and floods and understanding multipurpose dams. To address this, I will use more visual aids like comparative charts and simplified animations, and provide more guided practice with real-life examples.</p>
+                </div>
+                
+                <div class="question">
+                    <h3>3. What additional resources or modifications could improve the effectiveness of this lesson in future implementations?</h3>
+                    <p>Including more localized videos on river pollution and drought/flood management, interactive digital maps, and inviting a local environmental expert could enhance understanding. Modifying group sizes for more individualized attention during activities may also help.</p>
+                </div>
+                
+                <div class="question">
+                    <h3>4. How well did I adjust my teaching based on student reactions or unforeseen challenges?</h3>
+                    <p>I adapted by using flexible grouping, providing extra time for complex topics, and incorporating multimedia resources like videos and images when students showed confusion. Moving forward, I will build in more formative checks to adjust pacing in real-time.</p>
+                </div>
+            </div>
+        </div>
+        <div class="signature-section">
+            <div class="signature-box">
+                <p><strong>Teacher's Signature:</strong></p>
+                <div class="signature-line"></div>
+            </div>
+            <div class="signature-box">
+                <p><strong>Head Teacher's Signature:</strong></p>
+                <div class="signature-line"></div>
+            </div>
+        </div>
+        <footer>
+            <p>Teacher's Diary - EVS Grade 5 | Unit 6: Every Drop is Precious</p>
+        </footer>
+    </div>
+</body>
+</html>

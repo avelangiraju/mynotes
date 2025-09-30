@@ -201,6 +201,65 @@
     .active-content {
       display: block !important;
     }
+    
+    /* Loading indicator */
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: rgb(219, 11, 157);
+    }
+    
+    .loading:after {
+      content: '...';
+      animation: dots 1.5s steps(5, end) infinite;
+    }
+    
+    @keyframes dots {
+      0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+      40% { color: rgb(219, 11, 157); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+      60% { text-shadow: .25em 0 0 rgb(219, 11, 157), .5em 0 0 rgba(0,0,0,0); }
+      80%, 100% { text-shadow: .25em 0 0 rgb(219, 11, 157), .5em 0 0 rgb(219, 11, 157); }
+    }
+    
+    /* External content styling */
+    #external-content {
+      display: none;
+    }
+    
+    #external-content.active-content {
+      display: block;
+    }
+    
+    .external-content-wrapper {
+      width: 100%;
+    }
+    
+    .external-content-wrapper h1 {
+      color: rgb(219, 11, 157);
+      text-align: center;
+      font-size: 24px;
+      margin: 15px 0;
+    }
+    
+    .external-content-wrapper h2 {
+      color: rgba(219, 11, 157, 0.7);
+      font-size: 20px;
+      margin: 15px 0 10px;
+    }
+    
+    .external-content-wrapper h3 {
+      color: #000;
+      font-size: 18px;
+      margin: 12px 0 8px;
+    }
+    
+    .external-content-wrapper p, 
+    .external-content-wrapper ul, 
+    .external-content-wrapper ol {
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 8px 0;
+    }
 
     /* Mobile styles */
     @media (max-width: 768px) {
@@ -286,12 +345,12 @@
 
   <nav>
     <a href="#" onclick="showContent('home')">Home</a>
-    <a href="#">About</a>
-    <a href="#">Lessons</a>
-    <a href="#">Activities</a>
-    <a href="#">Resources</a>
-    <a href="#">Contact</a>
-    <a href="#">Feedback</a>
+    <a href="#" onclick="loadExternalContent('about.html')">About</a>
+    <a href="#" onclick="loadExternalContent('lessons.html')">Lessons</a>
+    <a href="#" onclick="loadExternalContent('activities.html')">Activities</a>
+    <a href="#" onclick="loadExternalContent('resources.html')">Resources</a>
+    <a href="#" onclick="loadExternalContent('contact.html')">Contact</a>
+    <a href="#" onclick="loadExternalContent('feedback.html')">Feedback</a>
   </nav>
 
   <main class="container">
@@ -307,19 +366,19 @@
       </div>
 
       <div class="card">
-        <button onclick="showContent('Activity-1')">Activity-1</button>
-        <button onclick="showContent('Activity-2')">Activity-2</button>
-        <button onclick="showContent('Activity-3')">Activity-3</button>
-        <button onclick="showContent('Activity-4')">Activity-4</button>
-        <button onclick="showContent('Activity-5')">Activity-5</button>
-        <button onclick="showContent('Activity-6')">Activity-6</button>
-        <button onclick="showContent('Activity-7')">Activity-7</button>
+        <button onclick="loadExternalContent('activity-1.html')">Activity-1</button>
+        <button onclick="loadExternalContent('activity-2.html')">Activity-2</button>
+        <button onclick="loadExternalContent('activity-3.html')">Activity-3</button>
+        <button onclick="loadExternalContent('activity-4.html')">Activity-4</button>
+        <button onclick="loadExternalContent('activity-5.html')">Activity-5</button>
+        <button onclick="loadExternalContent('activity-6.html')">Activity-6</button>
+        <button onclick="loadExternalContent('activity-7.html')">Activity-7</button>
       </div>
 
       <div class="card">
-        <button onclick="showContent('Reflections')">Teacher's Diary</button>
-        <button onclick="showContent('Observations')">Observations</button>
-        <button onclick="showContent('Student-Notes')">Student Notes</button>
+        <button onclick="loadExternalContent('5thEvsDiaryEveryDropIsPrecious.html')">Teacher's Diary</button>
+        <button onclick="loadExternalContent('observations.html')">Observations</button>
+        <button onclick="loadExternalContent('student-notes.html')">Student Notes</button>
       </div>
     </aside>
 
@@ -433,15 +492,9 @@
       </div>
       
       <!-- Teacher's diary summary -->
-      <div id="Reflections">Teacher's Diary</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(function(){
-    $("#Reflections").load("5thEvsDiaryEveryDropIsPrecious.html");
-  });
-</script>
-
-     
+      <div id="Reflections">
+        
+      
       <div id="Observations">
         <h1>Observations</h1>
         <p>Observation content will appear here.</p>
@@ -450,6 +503,11 @@
       <div id="Student-Notes">
         <h1>Student Notes</h1>
         <p>Student notes content will appear here.</p>
+      </div>
+      
+      <!-- External content container -->
+      <div id="external-content">
+        <!-- External content will be loaded here -->
       </div>
     </section>
   </main>
@@ -462,16 +520,132 @@
     function showContent(id) {
       // Hide all sections
       const sections = document.querySelectorAll('.main-content > div');
-      sections.forEach(sec => sec.classList.remove('active-content'));
+      sections.forEach(sec => {
+        sec.classList.remove('active-content');
+        sec.style.display = 'none';
+      });
       
       // Show selected
       const el = document.getElementById(id);
-      if (el) el.classList.add('active-content');
+      if (el) {
+        el.classList.add('active-content');
+        el.style.display = 'block';
+      }
       
       // Scroll to top of content on mobile
       if (window.innerWidth <= 768) {
         document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
       }
+    }
+    
+    // Function to load external HTML content
+    function loadExternalContent(filePath) {
+      // Hide all existing content
+      const sections = document.querySelectorAll('.main-content > div');
+      sections.forEach(sec => {
+        sec.classList.remove('active-content');
+        sec.style.display = 'none';
+      });
+      
+      // Show loading indicator in external content container
+      const container = document.getElementById('external-content');
+      container.innerHTML = '<div class="loading">Loading content</div>';
+      container.style.display = 'block';
+      container.classList.add('active-content');
+      
+      // Fetch the external HTML file
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('File not found');
+          }
+          return response.text();
+        })
+        .then(html => {
+          // Create a wrapper div to contain the external content
+          const wrapper = document.createElement('div');
+          wrapper.className = 'external-content-wrapper';
+          wrapper.innerHTML = html;
+          
+          // Insert the loaded HTML into the container
+          container.innerHTML = '';
+          container.appendChild(wrapper);
+          
+          // Apply styling to ensure consistency
+          applyStylingToExternalContent(container);
+          
+          // Scroll to top of content on mobile
+          if (window.innerWidth <= 768) {
+            document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+          }
+        })
+        .catch(error => {
+          console.error('Error loading external content:', error);
+          container.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+              <h2>Content Not Available</h2>
+              <p>The requested file "${filePath}" could not be loaded.</p>
+              <p>Please check if the file exists in the correct location.</p>
+              <button onclick="showContent('home')" style="
+                background-color: rgb(219, 11, 157);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 10px;
+              ">Return to Home</button>
+            </div>
+          `;
+        });
+    }
+    
+    // Function to apply consistent styling to external content
+    function applyStylingToExternalContent(container) {
+      // Apply styles to headings
+      const h1Elements = container.querySelectorAll('h1');
+      h1Elements.forEach(h1 => {
+        h1.style.color = 'rgb(219, 11, 157)';
+        h1.style.textAlign = 'center';
+        h1.style.fontSize = '24px';
+        h1.style.margin = '15px 0';
+      });
+      
+      const h2Elements = container.querySelectorAll('h2');
+      h2Elements.forEach(h2 => {
+        h2.style.color = 'rgba(219, 11, 157, 0.7)';
+        h2.style.fontSize = '20px';
+        h2.style.margin = '15px 0 10px';
+      });
+      
+      const h3Elements = container.querySelectorAll('h3');
+      h3Elements.forEach(h3 => {
+        h3.style.color = '#000';
+        h3.style.fontSize = '18px';
+        h3.style.margin = '12px 0 8px';
+      });
+      
+      // Apply styles to text elements
+      const pElements = container.querySelectorAll('p');
+      pElements.forEach(p => {
+        p.style.fontSize = '16px';
+        p.style.lineHeight = '1.5';
+        p.style.margin = '8px 0';
+      });
+      
+      const ulElements = container.querySelectorAll('ul');
+      ulElements.forEach(ul => {
+        ul.style.fontSize = '16px';
+        ul.style.lineHeight = '1.5';
+        ul.style.margin = '8px 0';
+      });
+      
+      const olElements = container.querySelectorAll('ol');
+      olElements.forEach(ol => {
+        ol.style.fontSize = '16px';
+        ol.style.lineHeight = '1.5';
+        ol.style.margin = '8px 0';
+      });
     }
     
     // Add event listeners for better mobile support
@@ -490,5 +664,4 @@
     });
   </script>
 </body>
-
 </html>
